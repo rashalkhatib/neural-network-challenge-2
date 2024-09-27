@@ -1,18 +1,27 @@
 # neural-network-challenge-2
-This model can be used by HR to predict whether employees are likely to leave the company. It also predicts which employees can be better suited in different departments within the company.
+The Attrition Prediction Model aims to predict two outcomes:
+1. Department: The department to which an employee belongs (multi-class classification).
+2. Attrition: Whether an employee will leave the company (binary classification).
+- This project leverages deep learning techniques to model both outcomes based on employee features such as age, job level, salary, performance rating, and other factors. The model consists of shared layers and two output layers, each responsible for predicting one of the outcomes.
 
-# Dataset Overview:
-- The dataset contains various features related to employees, such as age, years since last promotion, distance from home, education level, job satisfaction, total working years, and job involvement. These factors are explored and analyzed to determine their influence on whether an employee leaves the organization.
-# Preparing & preprocessing the data:
-- X_df includes 10 columns that include features related to the employees.
-- y_df includes the "attrition" column and the "department" column.
-- The features and target sets have been split into training and testing sets.
-- The X data was converted into numeric data.
-- StandardScaler was used to fit the scaler for training data and was used to transform both the training and testing data.
-- OneHotEncoder was used to fit the encoder for training data and was used to transform both the training and testing data.
-# Create, compile, and train the model:
-- 2 layers were created to create, compile, and train the model. The model was evaluated with the testing data.
-- The accuracy for both department and attrition was printed.
+# Model Structure:
+1. Shared Layers:
+The first few layers of the model are shared between the two tasks (Department and Attrition), helping the network learn common patterns from the input data.
+- Input Layer: Accepts employee features.
+- Dense Layers: Two dense layers with 64 and 32 units, ReLU activation functions, and L2 regularization to prevent overfitting.
+2. Output Layers:
+The model has two branches after the shared layers:
+- Department Output: Uses a softmax activation for multi-class classification. It predicts the department of the employee.
+- Attrition Output: Uses a sigmoid activation for binary classification. It predicts whether the employee will leave the company.
+
+# Loss Functions:
+- Department Output: Categorical Crossentropy
+- Attrition Output: Binary Crossentropy
+
+- # Training Process:
+- Optimizer: Adam optimizer is used for efficient gradient-based optimization.
+- Batch Size: Set to 32.
+- Epochs: The number of epochs can be modified, but the default is set to 50.
 
 # Summary:
 This notebook summarizes the most important factors that influence employee attrition, providing data-driven recommendations for reducing turnover in an organization.
